@@ -1,18 +1,61 @@
----
-title: Ухаалаг авто зогсоолын системийн Package Diagram
-```mermaid
-graph TD
-    UI[UI давхарга]
-    Service[Бизнес логик / Service давхарга]
-    Data[Өгөгдлийн давхарга]
-    Sensor[Мэдрэгч төхөөрөмжүүд]
-    Camera[Камерын модуль]
-    Admin[Админ удирдлага]
-    Core[Системийн цөм]
+@startuml
+title Онлайн номын сангийн систем - Package Diagram
 
-    UI --> Service
-    Admin --> Service
-    Sensor --> Service
-    Camera --> Service
-    Service --> Data
-    Service --> Core
+package "User Management" {
+  [User Registration]
+  [Login / Logout]
+  [User Profile]
+}
+
+package "Library Core" {
+  [Book Catalog]
+  [Search Engine]
+  [Book Details]
+}
+
+package "Borrowing System" {
+  [Borrow Request]
+  [Return Processing]
+  [Due Date Tracker]
+}
+
+package "Payment System" {
+  [Fine Calculation]
+  [Payment Gateway]
+}
+
+package "Admin Panel" {
+  [Book Management]
+  [User Management]
+  [Reports]
+}
+
+package "Database" {
+  [Users Table]
+  [Books Table]
+  [Borrowing Records]
+  [Payments]
+}
+
+' Relationships
+[User Registration] --> [Users Table]
+[Login / Logout] --> [Users Table]
+[User Profile] --> [Users Table]
+
+[Book Catalog] --> [Books Table]
+[Search Engine] --> [Books Table]
+[Book Details] --> [Books Table]
+
+[Borrow Request] --> [Borrowing Records]
+[Return Processing] --> [Borrowing Records]
+[Due Date Tracker] --> [Borrowing Records]
+
+[Fine Calculation] --> [Borrowing Records]
+[Fine Calculation] --> [Payments]
+[Payment Gateway] --> [Payments]
+
+[Book Management] --> [Books Table]
+[User Management] --> [Users Table]
+[Reports] --> [Borrowing Records]
+
+@enduml
