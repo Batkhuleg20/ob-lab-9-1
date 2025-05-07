@@ -1,0 +1,18 @@
+---
+title: Ухаалаг авто зогсоолын системийн Package Diagram
+---
+graph TD
+    UI[UI давхарга]
+    Service[Бизнес логик / Service давхарга]
+    Data[Өгөгдлийн давхарга]
+    Sensor[Мэдрэгч төхөөрөмжүүд]
+    Camera[Камерын модуль]
+    Admin[Админ удирдлага]
+    Core[Системийн цөм]
+
+    UI --> Service
+    Admin --> Service
+    Sensor --> Service
+    Camera --> Service
+    Service --> Data
+    Service --> Core
